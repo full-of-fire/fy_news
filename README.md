@@ -1,16 +1,7 @@
 # fy_news
 
-A new Flutter application.
+一款由flutter开发的资讯类App
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 2021-01-05
+1. 完成基本框架的搭建
+2. 自定义底部圆形TabBar
