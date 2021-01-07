@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fy_news/const/colors/FYColors.dart';
 import 'package:fy_news/const/strings/FYStrings.dart';
+import 'package:fy_news/http/http_util.dart';
+import 'package:fy_news/model/config.dart';
 import 'custom_ui/tab_bar_view.dart';
 import 'modules/circle/circle.dart';
 import 'modules/fyhelp/fy_help.dart';
@@ -20,7 +22,6 @@ class NewsApp extends StatelessWidget {
 }
 
 class TabBarView extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     return _TabBarViewState();
@@ -32,6 +33,20 @@ class _TabBarViewState extends State<TabBarView> {
   final _selectColor = FYColors.theme_color;
   final _pageController = PageController(initialPage: 0);
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    getConfig();
+    super.initState();
+  }
+
+  getConfig() async {
+    Result result  = await HttpUtil.get("?ct=index\&ac=config");
+
+    Config config = Config.fromJson(result.data as Map<String,dynamic>);
+    print(config.userid);
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
