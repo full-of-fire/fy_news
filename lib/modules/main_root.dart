@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:fy_news/const/app_manager.dart';
 import 'package:fy_news/const/colors/FYColors.dart';
 import 'package:fy_news/const/strings/FYStrings.dart';
 import 'package:fy_news/http/Api.dart';
@@ -40,6 +41,7 @@ class _TabBarViewState extends State<MainRootPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     HttpParamsUtil.configGlobalContext(context);
+    AppManager.shared.globalContext = context;
     return Scaffold(
         body: PageView(
           controller: _pageController,
