@@ -29,10 +29,50 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
+  fluttertoast:
+  event_bus:
+  crypto:
+  webview_flutter: # WebView
+  json_annotation: # JSON 解析
+    git:
+      url: https://github.com/ultronnet/json_serializable.dart
+      path: json_annotation
+  provider: # 数据
+  cached_network_image: # 图片缓存
+  permission_handler: # 隐私权限
+  shared_preferences: # 持久化存储
+  flutter_easyrefresh: # 下拉刷新
+  common_utils:
+  date_format:
+  image_picker:
+  flutter_native_image:
+  dart_des:
+  telebot:
+  package_info:
+  cupertino_back_gesture:
+  flutter_secure_storage: # Keychain & KeyStore https://pub.dev/packages/flutter_secure_storage
+  flutter_jailbreak_detection: # 越狱和 Root 检测 https://pub.dev/packages/flutter_jailbreak_detection
+  device_info: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  iconfont: # 生成字体图标 https://pub.dev/packages/iconfont
+  flutter_launcher_icons: # 生成 App Icon
+  build_runner:
+  json_serializable:
+    git:
+      url: https://github.com/ultronnet/json_serializable.dart
+      path: json_serializable
+dependency_overrides:
+  json_annotation:
+    git:
+      url: https://github.com/ultronnet/json_serializable.dart
+      path: json_annotation
+  json_serializable:
+    git:
+      url: https://github.com/ultronnet/json_serializable.dart
+      path: json_serializable
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,4 +1,4 @@
-import 'package:fy_news/http/http_util.dart';
+import 'package:fy_news/utils/http_params_util.dart';
 
 class Config {
   Config({

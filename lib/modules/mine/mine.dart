@@ -6,9 +6,20 @@ class MinePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Center(
-        child: Text("我的"),
-      ),
+      body: Container(
+        child: Column(
+          children: _items(),
+        ),
+      )
     );
+  }
+
+  List<Widget> _items() {
+    List<Widget> items = List<Widget>();
+    for(int i = 0; i < 100; i++){
+      items.add(Text("第几个 = {i}"));
+    }
+
+    return items;
   }
 }
