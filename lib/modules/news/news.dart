@@ -1,36 +1,29 @@
-
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_jailbreak_detection/generated/i18n.dart';
 import 'package:fy_news/const/localizations/app_local_manager.dart';
-import 'package:fy_news/const/localizations/app_localization.dart';
 import 'package:fy_news/generated/l10n.dart' as LocalS;
+import 'package:fy_news/modules/news/news_content.dart';
+import 'package:fy_news/modules/news/news_search.dart';
 
 
-class NewsPage extends StatelessWidget {
+
+class NewsPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _NewsPageState();
+}
+
+class _NewsPageState extends State<NewsPage> {
+  PageController _pageController = PageController(initialPage: 1,keepPage: true);
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Container(height: 200,),
-            Text(LocalS.S.of(context).title),
-            FlatButton(onPressed: (){
-
-              print("我被点击了");
-              if(AppLocalManager.currentLanguage.languageCode == "zh"){
-                AppLocalManager.changeLanguage("en");
-              }else {
-                AppLocalManager.changeLanguage("zh");
-              }
-
-
-            }, child: Text("点击切换语言"))
-          ],
-        ),
+      body: PageView(
+        controller: _pageController,
+        children: [
+          NewsSearchPage(),
+          NewsContentPage(mainPageController: _pageController,)
+        ],
       ),
     );
   }

@@ -23,8 +23,8 @@ class MainRootPage extends StatefulWidget {
 class _TabBarViewState extends State<MainRootPage> {
   final _defaltColor = FYColors.tab_unSelect_color;
   final _selectColor = FYColors.theme_color;
-  final _pageController = PageController(initialPage: 0,keepPage: true);
-  int _currentIndex = 0;
+  final _pageController = PageController(initialPage: 2,keepPage: true);
+  int _currentIndex = 2;
 
   @override
   void initState() {
