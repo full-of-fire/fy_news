@@ -55,6 +55,8 @@ dependencies:
   device_info: ^1.0.0
   flutter_localizations:  # 国际化
     sdk: flutter
+  geocoder: ^0.2.1
+  location: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -99,6 +101,20 @@ flutter:
      - images/reply_sel.png
      - images/samecity_nor.png
      - images/samecity_sel.png
+     - images/mine/default_avatar.png
+     - images/mine/facebook_logo_nor.png
+     - images/mine/mine_bg.png
+     - images/mine/wechat_logo_nor.png
+     - images/mine/lema_logo_nor.png
+     - images/mine/history.png
+     - images/mine/comment.png
+     - images/mine/wechat_logo_sel.png
+     - images/mine/lema_logo_sel.png
+     - images/mine/feedback.png
+     - images/mine/facebook_logo_sel.png
+     - images/mine/setting.png
+     - images/mine/favorite.png
+     - images/mine/mine_right_arrow.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

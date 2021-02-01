@@ -21,4 +21,16 @@ class FYStrings {
   static const samecity_sel = "images/samecity_sel.png";
   static const samecity_title = "同城";
 
+
+  //我的模块
+  static const mine_bg = "images/mine/mine_bg.png";
+  static const mine_defalut_avatar = "images/mine/default_avatar.png";
+  static const mine_right_arrow = "images/mine/mine_right_arrow.png";
+  static const mine_history = "images/mine/history.png";
+  static const mine_comment  = "images/mine/comment.png";
+  static const mine_favorite  = "images/mine/favorite.png";
+  static const mine_setting  = "images/mine/setting.png";
+  static const mine_feedback  = "images/mine/feedback.png";
+
+
 }
