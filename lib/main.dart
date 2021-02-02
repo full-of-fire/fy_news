@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fy_news/const/app_theme.dart';
 import 'package:fy_news/const/localizations/app_local_delegate.dart';
 import 'package:fy_news/const/localizations/app_local_manager.dart';
 import 'generated/l10n.dart';
@@ -46,6 +47,7 @@ class _LocalAppState extends State<LocalApp> {
         ],
         locale: AppLocalManager.currentLanguage,
         supportedLocales: AppLocalManager.supportedLanguages,
+        theme: getTheme(),
         home: MainRootPage()
     );
   }

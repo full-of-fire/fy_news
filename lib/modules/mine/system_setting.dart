@@ -5,8 +5,10 @@ import 'package:fy_news/const/app_manager.dart';
 import 'package:fy_news/const/colors/FYColors.dart';
 import 'package:fy_news/const/localizations/app_local_manager.dart';
 import 'package:fy_news/generated/l10n.dart';
+import 'package:fy_news/modules/mine/msg_notice.dart';
 import 'package:fy_news/utils/action_sheet_util.dart';
 import 'package:fy_news/utils/alert_util.dart';
+import 'package:fy_news/utils/navigator_util.dart';
 import 'custom_widgets/system_item.dart';
 
 class SystemSettingPage extends StatefulWidget {
@@ -45,7 +47,11 @@ class _SystemSettingPageState extends State<SystemSettingPage> {
       color: FYColors.color_292929
     );
     //消息通知
-    listItems.add(_buildNormalSettingItem(S.of(context).notification));
+    listItems.add(
+      _buildNormalSettingItem(S.of(context).notification, onTap: () {
+        NavigatorUtil.push(page: MsgNoticePage());
+      }),
+    );
 
     //修改密码
     listItems.add(_buildNormalSettingItem(S.of(context).change_password));
