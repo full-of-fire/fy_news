@@ -1,9 +1,17 @@
 
+import 'dart:developer';
+
+import 'package:fy_news/http/common_service.dart';
+import 'package:fy_news/http/index_service.dart';
 import 'package:fy_news/http/user_service.dart';
+
+class Service {
+  String baseUrl = Api.baseUrl;
+}
 
 enum ServerEnv { development, staging, production }
 //定义开发环境
-ServerEnv env = ServerEnv.development;
+ServerEnv env = ServerEnv.staging;
 class Api  {
   static String get baseUrl  {
     switch(env){
@@ -17,13 +25,14 @@ class Api  {
     }
   }
 
-  static final user = IndexService(baseUrl);
+  static final index = IndexService();
+  
+  static final common = CommonService();
+
+  static final user = UserService();
 
 }
 
-class Service {
-  String baseUrl;
-  Service(this.baseUrl);
-}
+
 
 

@@ -340,6 +340,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.11"
+  flutter_reachability:
+    dependency: "direct main"
+    description:
+      path: "../flutter_reachability"
+      relative: true
+    source: path
+    version: "1.0.0"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -927,7 +934,7 @@ packages:
     source: hosted
     version: "1.0.2+4"
   uuid:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: uuid
       url: "https://pub.dartlang.org"

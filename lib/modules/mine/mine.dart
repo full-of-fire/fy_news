@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:fy_news/Global/app_manager.dart';
 import 'package:fy_news/const/colors/FYColors.dart';
 import 'package:fy_news/const/strings/FYStrings.dart';
 import 'package:fy_news/generated/l10n.dart';
+import 'package:fy_news/modules/mine/login.dart';
 import 'package:fy_news/modules/mine/system_setting.dart';
 import 'package:fy_news/utils/navigator_util.dart';
 
@@ -13,6 +15,12 @@ class MinePage extends StatefulWidget {
 }
 
 class _MinePageState extends State<MinePage> {
+
+  ///跳转到登录页面
+  _pushLoginPage() {
+    NavigatorUtil.push(page: LoginPage());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +119,7 @@ class _MinePageState extends State<MinePage> {
       child: Container(
         height: height,
         // color: Colors.blue,
-        child: _buildLoginedView(context),
+        child: AppManager.shared.isLogin ? _buildLoginedView(context) : _buildUnLoginView(context),
       ),
     );
   }
@@ -119,9 +127,7 @@ class _MinePageState extends State<MinePage> {
   /// 未登录视图
   Widget _buildUnLoginView(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        print("跳转到登录页面");
-      },
+      onTap:_pushLoginPage,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,

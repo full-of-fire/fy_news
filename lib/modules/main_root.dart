@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'package:fy_news/const/app_manager.dart';
+import 'package:fy_news/Global/app_manager.dart';
 import 'package:fy_news/const/colors/FYColors.dart';
 import 'package:fy_news/const/strings/FYStrings.dart';
 import 'package:fy_news/http/Api.dart';
+import 'package:fy_news/model/country_list.dart';
+import 'package:fy_news/model/userId.dart';
 import 'package:fy_news/utils/http_params_util.dart';
 import 'package:fy_news/model/config.dart';
 import '../custom_ui/tab_bar_view.dart';
@@ -28,13 +30,29 @@ class _TabBarViewState extends State<MainRootPage> {
 
   @override
   void initState() {
-    getConfig();
+    // getConfig();
+    getUserid();
+    Api.index.getCurrentCountry();
     super.initState();
   }
 
   getConfig() async {
-    Config config = await Api.user.getConfig();
+    Config config = await Api.index.getConfig();
     print(config.userid);
+
+  }
+
+  getUserid() async {
+    UserIdModel idModel = await Api.common.getUserId();
+    print("useid = ${idModel.userid}");
+  }
+
+  _getCountryList() async {
+   CountryListModel listModel =  await Api.index.getCountryList();
+
+   for(var country in listModel.list) {
+     print(country.name);
+   }
   }
 
   @override
@@ -42,6 +60,11 @@ class _TabBarViewState extends State<MainRootPage> {
     // TODO: implement build
     HttpParamsUtil.configGlobalContext(context);
     AppManager.shared.globalContext = context;
+
+    // Api.index.checkAppIsUpdate(type:"ios",version:"1.7.1");
+    // Api.index.mainNewsConfig(country:"KH");
+    _getCountryList();
+
     return Scaffold(
         body: PageView(
           controller: _pageController,

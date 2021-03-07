@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fy_news/const/app_manager.dart';
+import 'package:fy_news/Global/app_manager.dart';
 import 'package:fy_news/const/colors/FYColors.dart';
 import 'package:fy_news/const/localizations/app_local_manager.dart';
 import 'package:fy_news/generated/l10n.dart';

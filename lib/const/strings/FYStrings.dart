@@ -31,6 +31,6 @@ class FYStrings {
   static const mine_favorite  = "images/mine/favorite.png";
   static const mine_setting  = "images/mine/setting.png";
   static const mine_feedback  = "images/mine/feedback.png";
-
+  static const mine_back  = "images/mine/mine_back.png";
 
 }

@@ -1,7 +1,16 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:crypto/crypto.dart';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_reachability/flutter_reachability.dart';
+import 'package:fy_news/Global/app_manager.dart';
+import 'package:fy_news/const/localizations/app_local_manager.dart';
+import 'package:fy_news/utils/store.dart';
 import 'package:package_info/package_info.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 class HttpParamsUtil  {
   
@@ -67,12 +76,65 @@ class HttpParamsUtil  {
     params["fromid"] = "0";  //渠道统计id
     params["read_mode"] = "0";
     params["app_country"] = "KH";
-    params["userid"] = "a035a1fd1c9f32ae44fdd8caefc38358";
+    if(AppManager.shared.userId != null) {
+      print("我现在有userID了");
+      params["userid"] = AppManager.shared.userId;
+    }else {
+      print("暂无用户id");
+    }
     // uuid 32位md5
-    params["utma"] = "c80545574d60102e20f1a518762794fe";
-    params["net"] = "3";
-    params["lang"] = "zh-cn";
+    String utma = await _getUtma();
+    print("utma == {$utma}");
+    params["utma"] = utma;
+    //监听网络状况
+    params["net"] = await _currentNet();
+    params["lang"] = _convertLanguageCode(AppLocalManager.currentLanguage.languageCode);
     params["mac"] = "00%3A00%3A00%3A00%3A00%3A00";
     return params;
+  }
+
+  /// 获取语言标识
+  static String _convertLanguageCode(String code) {
+    if (code == "zh") {
+      return "zh-cn";
+    }else if ( code == "km") {
+      return "km-KH";
+    }else if (code == "en") {
+      return "en";
+    }
+  }
+
+  static Future<String> _getUtma() async {
+    final String uuid_key = "uuid_key";
+    String uuid = await Store.read(uuid_key);
+    if(uuid == null) {
+      uuid = Uuid().v1();
+      Store.save(uuid_key, uuid);
+    }
+    var uuid_bytes =  utf8.encode(uuid);
+    return md5.convert(uuid_bytes).toString();
+  }
+
+  static Future<String> _currentNet() async {
+    if(Platform.isAndroid) {
+      await Permission.phone.request();
+    }
+    NetworkStatus networkStatus = await FlutterReachbility().currentNetworkStatus();
+    switch(networkStatus) {
+      case NetworkStatus.unreachable:
+        return "0";
+      case NetworkStatus.mobile2G:
+        return "1";
+      case NetworkStatus.moblie3G:
+        return "2";
+      case NetworkStatus.wifi:
+        return "3";
+      case NetworkStatus.moblie4G:
+        return "4";
+      case NetworkStatus.moblie5G:
+        return "5";
+      case NetworkStatus.otherMoblie:
+        return "6";
+    }
   }
 }

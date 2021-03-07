@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fy_news/generated/l10n.dart';
-import 'package:fy_news/const/app_manager.dart';
+import 'package:fy_news/Global/app_manager.dart';
 
 typedef ActionSheetItemClick = void Function(int);
 class ActionSheetUtil {

@@ -1,6 +1,6 @@
 
 import 'package:flutter/widgets.dart';
-import 'package:fy_news/const/app_manager.dart';
+import 'package:fy_news/Global/app_manager.dart';
 
 class AppLocalization {
   final Locale locale;
